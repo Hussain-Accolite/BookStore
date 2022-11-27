@@ -19,6 +19,29 @@ public class user {
     String mobileNo;
     @Column(name = "userStatus")
     String userStatus;
+
+    public int getBooksIssued() {
+        return booksIssued;
+    }
+
+    public void setBooksIssued(int booksIssued) {
+        this.booksIssued = booksIssued;
+    }
+
+    @Column(name = "booksIssued")
+    int booksIssued;
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "fk_id")
+//    private  wallet w;
+//
+//    public wallet getW() {
+//        return w;
+//    }
+//
+//    public void setW(wallet w) {
+//        this.w = w;
+//    }
+
     @CreationTimestamp
     private Date createdTime;
 
