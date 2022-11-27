@@ -1,7 +1,9 @@
 package com.library.BookStore.Service;
 
 
+import com.library.BookStore.Model.transactionHistory;
 import com.library.BookStore.Model.wallet;
+import com.library.BookStore.Repositry.transactionRepositry;
 import com.library.BookStore.Repositry.walletRepositry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +18,8 @@ public class walletServiceUtil implements walletService{
 
     @Autowired
     public walletRepositry repositry;
-
+    @Autowired
+    public transactionRepositry tr;
     @Override
     public wallet setMoney(wallet wallet) {
         return this.repositry.save(wallet);
@@ -43,6 +46,10 @@ public class walletServiceUtil implements walletService{
         Optional<wallet> Obj = this.repositry.findById(w.getId());
         if(Obj.isPresent()){
             if(w.getMoney()%500==0){
+                transactionHistory th = new transactionHistory();
+                th.setUserId(w.getId());
+                th.setAction(w.getMoney());
+                this.tr.save(th);
                 wallet wi = Obj.get();
                 wi.setMoney(wi.getMoney()+w.getMoney());
                 return this.repositry.save(wi);

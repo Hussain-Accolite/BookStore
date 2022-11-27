@@ -43,21 +43,11 @@ public class books {
         this.availability = availability;
     }
 
-    @Column(name = "likes")
-    long likes;
-
-    public long getLikes() {
-        return likes;
-    }
-
-    public void setLikes(long likes) {
-        this.likes = likes;
-    }
 
     @Column(name = "price")
     long price;
 
-    @Column(name = "like")
+    @Column(name = "likes")
     long like;
     @CreationTimestamp
     private Date createdTime;

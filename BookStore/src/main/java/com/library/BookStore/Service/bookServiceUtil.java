@@ -41,7 +41,7 @@ public class bookServiceUtil implements bookService{
         Optional<books> Obj = this.bookrepositry.findById(id);
         if (Obj.isPresent()){
             books b1 = Obj.get();
-            b1.setLikes(b1.getLikes()+1);
+            b1.setLike(b1.getLike()+1);
             return bookrepositry.save(b1);
         }
         else{

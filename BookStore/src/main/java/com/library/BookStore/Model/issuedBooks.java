@@ -13,10 +13,10 @@ public class issuedBooks {
     @GeneratedValue(strategy = GenerationType.AUTO)
     long tId;
 
-    @Column(name = "userId")
+    @Column(name = "userId",nullable = false)
     long userId;
 
-    @Column(name = "bookId")
+    @Column(name = "bookId",nullable = false)
     long bookId;
 
     @CreationTimestamp
